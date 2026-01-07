@@ -10,13 +10,18 @@ export default function home() {
   const onReset = () => {
     setTour(obj);
   };
+  const exist = () => {
+    return tour.length === 0 ? "No Tours Left" : "Available Tours";
+  };
+  const text = exist();
+
   return (
     <div className="justify-items-center mb-15">
-      <div className="text-sky-800 text-5xl pb-15 pt-15 text-center  ">
-        Available Tours
+      <div className="text-sky-800 text-5xl pb-15 pt-15 text-center">
+        {text}
       </div>
       <div className="flex justify-center items-center">
-        <div className="text-green-800 text-5xl border-b-6 w-60 rounded-2xl "></div>
+        <div className="text-emerald-700 text-5xl border-b-6 w-60 rounded-2xl "></div>
       </div>
       <div className="grid grid-cols-1 gap-y-10 justify-items-center pt-15 gap-x-25 lg:grid-cols-3 sm:grid-cols-2">
         {tour.map(({ id, img, tourName, price, content }) => (
@@ -47,7 +52,7 @@ const obj = [
   {
     id: 1,
     img: "/switzerland.jpg",
-    price: "7000",
+    price: "7700",
     tourName: "Switzerland Hiking & Walking Tours ",
     content:
       "If you’re looking for a scenic walking tour of Switzerland that includes Zürich, Lake Lucerne, and the best of the Swiss Alps, look no further! From the moment you meet your expert leaders in Zürich, you’ll be immersed in the alpine spirit—enjoying an enchanting boat ride on Lake Lucerne, then traveling by train, gondola, and cog rail past the famous peaks of Jungfrau, Mönch, and Eiger. Hike along rugged mountain ridges, stopping to appreciate sparkling waterfalls and fields of edelweiss and gentian—and perhaps spotting the hardy alpine chamois and whistling marmots that forage among these rocky slopes. ",
@@ -79,7 +84,7 @@ const obj = [
   {
     id: 5,
     img: "/italy.jpeg",
-    price: "7000",
+    price: "6700",
     tourName: " Italy | Venice, a city under Water ",
     content:
       "Venice, often called the city under water, is a magical destination built on canals instead of roads. Gondolas glide past historic palaces, bridges, and hidden squares, creating a dreamlike atmosphere unlike anywhere else in the world. With its rich maritime history, romantic ambiance, and unique architecture rising from the lagoon, Venice offers an unforgettable journey through art, history, and water-bound beauty. ",
@@ -98,14 +103,16 @@ export const Item = ({ img, price, tourName, content, onClick, id }) => {
   console.log(more);
 
   return (
-    <div className="w-85 h-min bg-white text-green-700 rounded-2xl shadow-xl/20">
+    <div className="w-85 h-min bg-white  rounded-2xl shadow-xl/20">
       <div className="h-58">
         <img src={img} className="w-85 h-55 rounded-t-2xl" />
         <p className="w-20 text-center h-vh relative bottom-55 left-65 text-white text-2xl bg-sky-700 rounded-tr-lg">
           {price}$
         </p>
       </div>
-      <h1 className="pl-4 pb-2 text-xl">{tourName}</h1>
+      <h1 className="pl-4 pb-2 text-xl text-yellow-800 font-medium">
+        {tourName}
+      </h1>
       <h2 className="text-gray-600 pl-4 pr-4 ">
         {newContent}
         {isShow ? (
